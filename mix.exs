@@ -34,6 +34,7 @@ defmodule Groom.Mixfile do
     [
       {:absinthe, "~> 1.4"},
       {:absinthe_plug, "~> 1.4"},
+      {:absinthe_phoenix, "~> 1.4"},
       {:cowboy, "~> 1.0"},
       {:credo, "~> 0.10", only: [:dev, :test], runtime: false},
       {:gettext, "~> 0.11"},
