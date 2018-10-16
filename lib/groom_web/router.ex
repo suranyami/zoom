@@ -30,6 +30,7 @@ defmodule GroomWeb.Router do
     "/graphiql",
     Absinthe.Plug.GraphiQL,
     schema: GroomWeb.Schema,
-    interface: :simple
+    socket: GroomWeb.UserSocket,
+    interface: :advanced
   )
 end
