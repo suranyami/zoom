@@ -1,4 +1,5 @@
 defmodule Groom.Mixfile do
+  @moduledoc "GraphQL room simulator"
   use Mix.Project
 
   def project do

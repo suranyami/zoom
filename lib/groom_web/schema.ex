@@ -27,4 +27,18 @@ defmodule GroomWeb.Schema do
       resolve(&Resolvers.Users.add/3)
     end
   end
+
+  subscription do
+    field :user_added, :user do
+      trigger(:add_user,
+        topic: fn _ ->
+          "*"
+        end
+      )
+
+      config(fn _, _info ->
+        {:ok, topic: "*"}
+      end)
+    end
+  end
 end
