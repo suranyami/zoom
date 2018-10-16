@@ -1,4 +1,4 @@
-defmodule GroomWeb.Schema.AccountTypes do
+defmodule GroomWeb.Schema.User do
   @moduledoc """
     Represents a user account.
   """

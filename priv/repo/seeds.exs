@@ -9,3 +9,6 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+Groom.Repo.insert!(%Groom.User{name: "Norm Smith", age: 33})
+Groom.Repo.insert!(%Groom.User{name: "Fred Nurk", age: 22})

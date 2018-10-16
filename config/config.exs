@@ -14,8 +14,7 @@ config :groom, GroomWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "uqQ0lco/mLVNPnYiNRFe65yWry/TnpBg/PML9dl57iCFLv4ALFRLw50WC47yqq4w",
   render_errors: [view: GroomWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Groom.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Groom.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -24,4 +23,4 @@ config :logger, :console,
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"
