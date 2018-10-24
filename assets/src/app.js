@@ -1,32 +1,29 @@
 // First we import the various pieces of Vue and Apollo.
 import Vue from 'vue'
+import { setContext } from 'apollo-link-context';
+import { InMemoryCache as Cache } from 'apollo-cache-inmemory';
+
 import { ApolloClient } from 'apollo-client'
-import { InMemoryCache } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
 import VueApollo from 'vue-apollo'
 
 import * as AbsintheSocket from "@absinthe/socket";
-import {Socket as PhoenixSocket} from "phoenix";
+import { createAbsintheSocketLink } from '@absinthe/socket-apollo-link';
+import { Socket as PhoenixSocket } from "phoenix";
 
 const absintheSocket = AbsintheSocket.create(
   new PhoenixSocket("ws://localhost:4000/socket")
 );
 
 const userAddedSub = `
-  subscription {
-    userAdded {
-      id
-    }
+subscription {
+  userAdded {
+    name
   }
+}
 `
 
-// This example uses a subscription, but the functionallity is the same for
-// all operation types (queries, mutations and subscriptions)
-
-const notifier = AbsintheSocket.send(absintheSocket, {
-  userAddedSub,
-  variables: {userId: 10}
-})
+const notifier = AbsintheSocket.send(absintheSocket, {userAddedSub})
 
 const logEvent = eventName => (...args) => console.log(eventName, ...args);
 
