@@ -1,10 +1,10 @@
-defmodule GroomWeb.UserSocket do
+defmodule ZoomWeb.UserSocket do
   use Phoenix.Socket
 
-  use Absinthe.Phoenix.Socket, schema: GroomWeb.Schema
+  use Absinthe.Phoenix.Socket, schema: ZoomWeb.Schema
 
   ## Channels
-  # channel "room:*", GroomWeb.RoomChannel
+  # channel "room:*", ZoomWeb.RoomChannel
 
   transport(:websocket, Phoenix.Transports.WebSocket)
 
@@ -33,7 +33,7 @@ defmodule GroomWeb.UserSocket do
   end
 
   # defp current_user(%{"user_id" => id}) do
-  #   Groom.Repo.get(User, id)
+  #   Zoom.Repo.get(User, id)
   # end
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
@@ -43,7 +43,7 @@ defmodule GroomWeb.UserSocket do
   # Would allow you to broadcast a "disconnect" event and terminate
   # all active sockets and channels for a given user:
   #
-  #     GroomWeb.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
+  #     ZoomWeb.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
   def id(_socket), do: nil

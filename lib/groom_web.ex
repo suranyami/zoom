@@ -1,12 +1,12 @@
-defmodule GroomWeb do
+defmodule ZoomWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use GroomWeb, :controller
-      use GroomWeb, :view
+      use ZoomWeb, :controller
+      use ZoomWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,17 +19,17 @@ defmodule GroomWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: GroomWeb
+      use Phoenix.Controller, namespace: ZoomWeb
       import Plug.Conn
-      import GroomWeb.Router.Helpers
-      import GroomWeb.Gettext
+      import ZoomWeb.Router.Helpers
+      import ZoomWeb.Gettext
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/groom_web/templates",
-                        namespace: GroomWeb
+      use Phoenix.View, root: "lib/zoom_web/templates",
+                        namespace: ZoomWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
@@ -37,9 +37,9 @@ defmodule GroomWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import GroomWeb.Router.Helpers
-      import GroomWeb.ErrorHelpers
-      import GroomWeb.Gettext
+      import ZoomWeb.Router.Helpers
+      import ZoomWeb.ErrorHelpers
+      import ZoomWeb.Gettext
     end
   end
 
@@ -54,7 +54,7 @@ defmodule GroomWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import GroomWeb.Gettext
+      import ZoomWeb.Gettext
     end
   end
 

@@ -1,4 +1,4 @@
-defmodule Groom.Application do
+defmodule Zoom.Application do
   @moduledoc """
     Start repo, endpoint, Absinthe Subscription supervisors.
   """
@@ -8,17 +8,17 @@ defmodule Groom.Application do
     import Supervisor.Spec
 
     children = [
-      supervisor(Groom.Repo, []),
-      supervisor(GroomWeb.Endpoint, []),
-      supervisor(Absinthe.Subscription, [GroomWeb.Endpoint])
+      supervisor(Zoom.Repo, []),
+      supervisor(ZoomWeb.Endpoint, []),
+      supervisor(Absinthe.Subscription, [ZoomWeb.Endpoint])
     ]
 
-    opts = [strategy: :one_for_one, name: Groom.Supervisor]
+    opts = [strategy: :one_for_one, name: Zoom.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
   def config_change(changed, _new, removed) do
-    GroomWeb.Endpoint.config_change(changed, removed)
+    ZoomWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

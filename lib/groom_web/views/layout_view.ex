@@ -1,3 +1,3 @@
-defmodule GroomWeb.LayoutView do
-  use GroomWeb, :view
+defmodule ZoomWeb.LayoutView do
+  use ZoomWeb, :view
 end

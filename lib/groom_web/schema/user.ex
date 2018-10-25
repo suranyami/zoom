@@ -1,4 +1,4 @@
-defmodule GroomWeb.Schema.User do
+defmodule ZoomWeb.Schema.User do
   @moduledoc """
     Represents a user account.
   """

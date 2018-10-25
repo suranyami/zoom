@@ -1,5 +1,5 @@
-defmodule GroomWeb.ErrorView do
-  use GroomWeb, :view
+defmodule ZoomWeb.ErrorView do
+  use ZoomWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

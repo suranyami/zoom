@@ -1,4 +1,4 @@
-defmodule Groom.DataCase do
+defmodule Zoom.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -16,20 +16,20 @@ defmodule Groom.DataCase do
 
   using do
     quote do
-      alias Groom.Repo
+      alias Zoom.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Groom.DataCase
+      import Zoom.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Groom.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Zoom.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Groom.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Zoom.Repo, {:shared, self()})
     end
 
     :ok

@@ -1,6 +1,6 @@
-defmodule Groom do
+defmodule Zoom do
   @moduledoc """
-  Groom keeps the contexts that define your domain
+  Zoom keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless

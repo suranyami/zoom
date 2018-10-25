@@ -1,5 +1,5 @@
-defmodule Groom.Repo do
-  use Ecto.Repo, otp_app: :groom
+defmodule Zoom.Repo do
+  use Ecto.Repo, otp_app: :zoom
 
   @doc """
   Dynamically loads the repository url from the

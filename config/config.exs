@@ -6,15 +6,15 @@
 use Mix.Config
 
 # General application configuration
-config :groom,
-  ecto_repos: [Groom.Repo]
+config :zoom,
+  ecto_repos: [Zoom.Repo]
 
 # Configures the endpoint
-config :groom, GroomWeb.Endpoint,
+config :zoom, ZoomWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "uqQ0lco/mLVNPnYiNRFe65yWry/TnpBg/PML9dl57iCFLv4ALFRLw50WC47yqq4w",
-  render_errors: [view: GroomWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Groom.PubSub, adapter: Phoenix.PubSub.PG2]
+  render_errors: [view: ZoomWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Zoom.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,

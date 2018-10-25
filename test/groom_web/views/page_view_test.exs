@@ -1,3 +1,3 @@
-defmodule GroomWeb.PageViewTest do
-  use GroomWeb.ConnCase, async: true
+defmodule ZoomWeb.PageViewTest do
+  use ZoomWeb.ConnCase, async: true
 end

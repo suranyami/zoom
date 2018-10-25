@@ -2,7 +2,7 @@ use Mix.Config
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :groom, GroomWeb.Endpoint,
+config :zoom, ZoomWeb.Endpoint,
   http: [port: 4001],
   server: false
 
@@ -10,10 +10,10 @@ config :groom, GroomWeb.Endpoint,
 config :logger, level: :warn
 
 # Configure your database
-config :groom, Groom.Repo,
+config :zoom, Zoom.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
-  database: "groom_test",
+  database: "zoom_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

@@ -1,5 +1,5 @@
-defmodule GroomWeb.Router do
-  use GroomWeb, :router
+defmodule ZoomWeb.Router do
+  use ZoomWeb, :router
 
   pipeline :browser do
     plug(:accepts, ["html"])
@@ -13,7 +13,7 @@ defmodule GroomWeb.Router do
     plug(:accepts, ["json"])
   end
 
-  scope "/", GroomWeb do
+  scope "/", ZoomWeb do
     # Use the default browser stack
     pipe_through(:browser)
 
@@ -23,14 +23,14 @@ defmodule GroomWeb.Router do
   forward(
     "/graphql",
     Absinthe.Plug,
-    schema: GroomWeb.Schema
+    schema: ZoomWeb.Schema
   )
 
   forward(
     "/graphiql",
     Absinthe.Plug.GraphiQL,
-    schema: GroomWeb.Schema,
-    socket: GroomWeb.UserSocket,
+    schema: ZoomWeb.Schema,
+    socket: ZoomWeb.UserSocket,
     interface: :advanced
   )
 end

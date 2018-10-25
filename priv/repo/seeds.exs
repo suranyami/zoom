@@ -5,10 +5,10 @@
 # Inside the script, you can read and write to any of your
 # repositories directly:
 #
-#     Groom.Repo.insert!(%Groom.SomeSchema{})
+#     Zoom.Repo.insert!(%Zoom.SomeSchema{})
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-Groom.Repo.insert!(%Groom.User{name: "Norm Smith", age: 33})
-Groom.Repo.insert!(%Groom.User{name: "Fred Nurk", age: 22})
+Zoom.Repo.insert!(%Zoom.User{name: "Norm Smith", age: 33})
+Zoom.Repo.insert!(%Zoom.User{name: "Fred Nurk", age: 22})

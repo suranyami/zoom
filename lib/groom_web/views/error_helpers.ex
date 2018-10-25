@@ -1,4 +1,4 @@
-defmodule GroomWeb.ErrorHelpers do
+defmodule ZoomWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -36,9 +36,9 @@ defmodule GroomWeb.ErrorHelpers do
     # should be written to the errors.po file. The :count option is
     # set by Ecto and indicates we should also apply plural rules.
     if count = opts[:count] do
-      Gettext.dngettext(GroomWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(ZoomWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(GroomWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(ZoomWeb.Gettext, "errors", msg, opts)
     end
   end
 end

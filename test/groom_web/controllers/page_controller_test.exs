@@ -1,5 +1,5 @@
-defmodule GroomWeb.PageControllerTest do
-  use GroomWeb.ConnCase
+defmodule ZoomWeb.PageControllerTest do
+  use ZoomWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

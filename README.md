@@ -1,4 +1,4 @@
-# Groom
+# Zoom
 
 To start your Phoenix server:
 

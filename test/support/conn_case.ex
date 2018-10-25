@@ -1,4 +1,4 @@
-defmodule GroomWeb.ConnCase do
+defmodule ZoomWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -19,18 +19,18 @@ defmodule GroomWeb.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
-      import GroomWeb.Router.Helpers
+      import ZoomWeb.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint GroomWeb.Endpoint
+      @endpoint ZoomWeb.Endpoint
     end
   end
 
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Groom.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Zoom.Repo)
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Groom.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Zoom.Repo, {:shared, self()})
     end
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end

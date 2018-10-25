@@ -1,4 +1,4 @@
-defmodule GroomWeb.ChannelCase do
+defmodule ZoomWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -21,15 +21,15 @@ defmodule GroomWeb.ChannelCase do
       use Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint GroomWeb.Endpoint
+      @endpoint ZoomWeb.Endpoint
     end
   end
 
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Groom.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Zoom.Repo)
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Groom.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Zoom.Repo, {:shared, self()})
     end
     :ok
   end

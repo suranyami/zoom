@@ -1,6 +1,6 @@
 use Mix.Config
 
-config :groom, GroomWeb.Endpoint,
+config :zoom, ZoomWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -14,13 +14,13 @@ config :groom, GroomWeb.Endpoint,
     ]
   ]
 
-config :groom, GroomWeb.Endpoint,
+config :zoom, ZoomWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{lib/groom_web/views/.*(ex)$},
-      ~r{lib/groom_web/templates/.*(eex)$}
+      ~r{lib/zoom_web/views/.*(ex)$},
+      ~r{lib/zoom_web/templates/.*(eex)$}
     ]
   ]
 
@@ -28,10 +28,10 @@ config :logger, :console, format: "[$level] $message\n"
 
 config :phoenix, :stacktrace_depth, 20
 
-config :groom, Groom.Repo,
+config :zoom, Zoom.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
-  database: "groom_dev",
+  database: "zoom_dev",
   hostname: "localhost",
   pool_size: 10

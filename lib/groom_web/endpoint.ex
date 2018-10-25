@@ -1,8 +1,8 @@
-defmodule GroomWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :groom
+defmodule ZoomWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :zoom
   use Absinthe.Phoenix.Endpoint
 
-  socket("/socket", GroomWeb.UserSocket)
+  socket("/socket", ZoomWeb.UserSocket)
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -10,7 +10,7 @@ defmodule GroomWeb.Endpoint do
   # when deploying your static files in production.
   plug(Plug.Static,
     at: "/",
-    from: :groom,
+    from: :zoom,
     gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
   )
@@ -39,11 +39,11 @@ defmodule GroomWeb.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug(Plug.Session,
     store: :cookie,
-    key: "_groom_key",
+    key: "_zoom_key",
     signing_salt: "q3sxF/CG"
   )
 
-  plug(GroomWeb.Router)
+  plug(ZoomWeb.Router)
 
   @doc """
   Callback invoked for dynamically configuring the endpoint.

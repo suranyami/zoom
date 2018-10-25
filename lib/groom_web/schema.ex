@@ -1,11 +1,11 @@
-defmodule GroomWeb.Schema do
+defmodule ZoomWeb.Schema do
   @moduledoc """
-    GraphQL schema for GroomWeb.
+    GraphQL schema for ZoomWeb.
   """
   use Absinthe.Schema
   import_types(Absinthe.Type.Custom)
-  import_types(GroomWeb.Schema.User)
-  alias GroomWeb.Resolvers
+  import_types(ZoomWeb.Schema.User)
+  alias ZoomWeb.Resolvers
 
   query do
     @desc "Get a user"

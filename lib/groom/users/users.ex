@@ -1,9 +1,9 @@
-defmodule Groom.Users do
+defmodule Zoom.Users do
   @moduledoc """
     User Data Context.
   """
 
-  alias Groom.{Repo, User}
+  alias Zoom.{Repo, User}
 
   def add(name, age) do
     %User{}

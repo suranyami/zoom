@@ -1,10 +1,10 @@
-defmodule Groom.Mixfile do
+defmodule Zoom.Mixfile do
   @moduledoc "GraphQL room simulator"
   use Mix.Project
 
   def project do
     [
-      app: :groom,
+      app: :zoom,
       version: "0.0.1",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule Groom.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Groom.Application, []},
+      mod: {Zoom.Application, []},
       extra_applications: [
         :logger,
         :runtime_tools

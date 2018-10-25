@@ -1,4 +1,4 @@
-defmodule Groom.User do
+defmodule Zoom.User do
   @moduledoc """
     User database schema.
   """
