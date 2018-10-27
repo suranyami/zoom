@@ -15,16 +15,29 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js & Phoenix & GraphQL App',
-      user: ''
+      user: {
+        name: '',
+        age: ''
+      }
     }
   },
   apollo: {
-    user: gql`{
-      user(id: "1") {
-        name
-        age
+    $subscribe: {
+      userAdded: {
+        query: gql`subscription {
+          userAdded {
+            name
+            age
+          }
+        }`,
+        result(data) {
+          const user = data.data.userAdded
+          this.user = user
+          console.log(user)
+          return(user)
+        }
       }
-    }`
+    }
   }
 }
 </script>

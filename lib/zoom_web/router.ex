@@ -25,7 +25,7 @@ defmodule ZoomWeb.Router do
     schema: ZoomWeb.Schema,
     socket: ZoomWeb.UserSocket,
     analyze_complexity: true,
-    interface: :advanced
+    interface: :playground
   )
 
   scope "/", ZoomWeb do

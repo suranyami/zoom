@@ -36,10 +36,11 @@ const operation = `
 subscription {
   userAdded {
     name
+    age
   }
-}
-`
-const notifier = AbsintheSocket.send(absintheSocket, {operation, variables: {}})
+}`
+
+const notifier = AbsintheSocket.send(absintheSocket, {operation})
 
 const logEvent = eventName => (...args) => console.log(eventName, ...args)
 
