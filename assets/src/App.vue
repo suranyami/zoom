@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    <h1>{{ msg }}</h1>
-    <h2>The following was loaded over Graphql:</h2>
     <h1>User: {{ user.name }}</h1>
     <h1>Age: {{ user.age }}</h1>
   </div>
@@ -14,7 +12,6 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js & Phoenix & GraphQL App',
       user: {
         name: '',
         age: ''
@@ -22,6 +19,13 @@ export default {
     }
   },
   apollo: {
+    user: gql`query {
+      user(id: 1) {
+        name
+        age
+      }
+    }`,
+
     $subscribe: {
       userAdded: {
         query: gql`subscription {
@@ -33,7 +37,6 @@ export default {
         result(data) {
           const user = data.data.userAdded
           this.user = user
-          console.log(user)
           return(user)
         }
       }
