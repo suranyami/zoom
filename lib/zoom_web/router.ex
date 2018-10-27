@@ -13,13 +13,6 @@ defmodule ZoomWeb.Router do
     plug(:accepts, ["json"])
   end
 
-  scope "/", ZoomWeb do
-    # Use the default browser stack
-    pipe_through(:browser)
-
-    get("/", PageController, :index)
-  end
-
   forward(
     "/graphql",
     Absinthe.Plug,
@@ -31,6 +24,13 @@ defmodule ZoomWeb.Router do
     Absinthe.Plug.GraphiQL,
     schema: ZoomWeb.Schema,
     socket: ZoomWeb.UserSocket,
+    analyze_complexity: true,
     interface: :advanced
   )
+
+  scope "/", ZoomWeb do
+    pipe_through(:browser)
+    get("/", PageController, :index)
+    resources("/page", PageController)
+  end
 end
