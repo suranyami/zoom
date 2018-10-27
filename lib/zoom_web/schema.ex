@@ -22,8 +22,11 @@ defmodule ZoomWeb.Schema do
 
   mutation do
     field :add_user, :user do
-      arg(:name, non_null(:string))
-      arg(:age, non_null(:integer))
+      arg(:name, :string)
+      arg(:age, :integer)
+      arg(:color, :string)
+      arg(:uuid, :string)
+
       resolve(&Resolvers.Users.add/3)
     end
   end
