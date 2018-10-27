@@ -1,31 +1,47 @@
 // First we import the various pieces of Vue and Apollo.
 import Vue from 'vue'
-import { setContext } from 'apollo-link-context';
-import { InMemoryCache as Cache } from 'apollo-cache-inmemory';
+import { setContext } from 'apollo-link-context'
+import { InMemoryCache } from 'apollo-cache-inmemory'
 
 import { ApolloClient } from 'apollo-client'
+import { createHttpLink } from "apollo-link-http"
+import { ApolloLink } from "apollo-link"
 import { HttpLink } from 'apollo-link-http'
 import VueApollo from 'vue-apollo'
 
-import * as AbsintheSocket from "@absinthe/socket";
-import { createAbsintheSocketLink } from '@absinthe/socket-apollo-link';
-import { Socket as PhoenixSocket } from "phoenix";
+import { hasSubscription } from "@jumpn/utils-graphql"
+
+import * as AbsintheSocket from "@absinthe/socket"
+import { createAbsintheSocketLink } from "@absinthe/socket-apollo-link"
+import { Socket as PhoenixSocket } from "phoenix"
 
 const absintheSocket = AbsintheSocket.create(
   new PhoenixSocket("ws://localhost:4000/socket")
-);
+)
+const absintheSocketLink = createAbsintheSocketLink(absintheSocket)
 
-const userAddedSub = `
+const link = new ApolloLink.split(
+  operation => hasSubscription(operation.query),
+  absintheSocketLink,
+  createHttpLink({uri: "/graphql"})
+)
+
+const apolloClient = new ApolloClient({
+  link,
+  cache: new InMemoryCache(),
+  connectToDevTools: true,
+})
+
+const operation = `
 subscription {
   userAdded {
     name
   }
 }
 `
+const notifier = AbsintheSocket.send(absintheSocket, {operation, variables: {}})
 
-const notifier = AbsintheSocket.send(absintheSocket, {userAddedSub})
-
-const logEvent = eventName => (...args) => console.log(eventName, ...args);
+const logEvent = eventName => (...args) => console.log(eventName, ...args)
 
 const updatedNotifier = AbsintheSocket.observe(absintheSocket, notifier, {
   onAbort: logEvent("abort"),
@@ -37,21 +53,6 @@ const updatedNotifier = AbsintheSocket.observe(absintheSocket, notifier, {
 // Import our main app component, the top-level container for our app.
 import App from './App.vue'
 
-// Create the link the Apollo Client will manage between our frontend client and GraphQL server.
-// Note that this is setup for development/demo - deployment will require your real URL.
-const httpLink = new HttpLink({
-  // You should use an absolute URL here
-  uri: 'http://localhost:4000/graphql',
-})
-
-// Create the apollo client, with the Apollo caching.
-const apolloClient = new ApolloClient({
-  link: httpLink,
-  cache: new InMemoryCache(),
-  connectToDevTools: true,
-})
-
-// Install the vue plugin for VueApollo
 Vue.use(VueApollo)
 
 const apolloProvider = new VueApollo({
