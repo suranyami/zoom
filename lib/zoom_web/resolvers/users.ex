@@ -16,4 +16,8 @@ defmodule ZoomWeb.Resolvers.Users do
   def list(_parent, _, _resolution) do
     {:ok, Zoom.Users.list()}
   end
+
+  def count(_parent, _, _) do
+    {:ok, Zoom.Users.count()}
+  end
 end

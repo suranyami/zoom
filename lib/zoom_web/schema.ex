@@ -18,6 +18,11 @@ defmodule ZoomWeb.Schema do
     field :users, list_of(:user) do
       resolve(&Resolvers.Users.list/3)
     end
+
+    @desc "Count number of users"
+    field :count_users, :integer do
+      resolve(&Resolvers.Users.count/3)
+    end
   end
 
   mutation do
@@ -42,6 +47,21 @@ defmodule ZoomWeb.Schema do
       config(fn _, _info ->
         {:ok, topic: "*"}
       end)
+    end
+
+    field :count_users, :integer do
+      trigger(:add_user,
+        topic: fn _ ->
+          "*"
+        end
+      )
+
+      config(fn _, _info ->
+        {:ok, topic: "*"}
+      end)
+
+      resolve(&Resolvers.Users.count/3)
+
     end
   end
 end

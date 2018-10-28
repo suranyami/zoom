@@ -2,20 +2,18 @@
   <div id="app">
     <h1>User: {{ user.name }}</h1>
     <h1>Age: {{ user.age }}</h1>
+    <h1>Number of Users: {{ countUsers }}</h1>
   </div>
 </template>
 
 <script>
 import gql from 'graphql-tag'
-
 export default {
   name: 'app',
   data () {
     return {
-      user: {
-        name: '',
-        age: ''
-      }
+      user: {name: '', age: ''},
+      countUsers: 0
     }
   },
   apollo: {
@@ -24,6 +22,10 @@ export default {
         name
         age
       }
+    }`,
+
+    countUsers: gql`query {
+      countUsers
     }`,
 
     $subscribe: {
@@ -39,7 +41,19 @@ export default {
           this.user = user
           return(user)
         }
+      },
+
+      countUsers: {
+        query: gql`subscription {
+          countUsers
+        }`,
+        result(data) {
+          const countUsers = data.data.countUsers
+          this.countUsers = countUsers
+          return(countUsers)
+        }
       }
+
     }
   }
 }
