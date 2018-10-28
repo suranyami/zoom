@@ -1,8 +1,12 @@
 <template>
   <div id="app">
-    <h1>User: {{ user.name }}</h1>
-    <h1>Age: {{ user.age }}</h1>
-    <h1>Number of Users: {{ countUsers }}</h1>
+    <h1>New User: {{ user.name }}</h1>
+    <h3>Age: {{ user.age }}</h3>
+    <h2>Total Users: {{ countUsers }}</h2>
+    <hr>
+    <ul>
+      <li v-for="u in users"> {{ u.name }}</li>
+    </ul>
   </div>
 </template>
 
@@ -12,6 +16,7 @@ export default {
   name: 'app',
   data () {
     return {
+      users: [],
       user: {name: '', age: ''},
       countUsers: 0
     }
@@ -21,6 +26,12 @@ export default {
       user(id: 1) {
         name
         age
+      }
+    }`,
+
+    users: gql`query {
+      users {
+        name
       }
     }`,
 
@@ -40,6 +51,19 @@ export default {
           const user = data.data.userAdded
           this.user = user
           return(user)
+        }
+      },
+
+      users: {
+        query: gql`subscription {
+          users {
+            name
+          }
+        }`,
+        result(data) {
+          const users = data.data.users
+          this.users = users
+          return(users)
         }
       },
 

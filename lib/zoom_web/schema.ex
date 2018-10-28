@@ -49,6 +49,19 @@ defmodule ZoomWeb.Schema do
       end)
     end
 
+    field :users, list_of(:user) do
+      trigger(:add_user,
+        topic: fn _ ->
+          "*"
+        end
+      )
+
+      config(fn _, _info ->
+        {:ok, topic: "*"}
+      end)
+      resolve(&Resolvers.Users.list/3)
+    end
+
     field :count_users, :integer do
       trigger(:add_user,
         topic: fn _ ->
