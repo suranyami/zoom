@@ -1,9 +1,26 @@
 <template>
-  <div id="app">
-    <h1>{{ msg }}</h1>
-    <h2>The following was loaded over Graphql:</h2>
-    <h1>User: {{ user.name }}</h1>
-    <h1>Age: {{ user.age }}</h1>
+  <div class="container">
+    <div id="app">
+      <h1>{{ msg }}</h1>
+      <h2>The following was loaded over Graphql:</h2>
+      <h3>User: {{ user.name }}</h3>
+      <h3>Age: {{ user.age }}</h3>
+
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="user in users">
+            <td>{{ user.name }}</td>
+            <td>{{ user.age }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -18,10 +35,25 @@ export default {
       user: {
         name: '',
         age: ''
-      }
+      },
+      users: [
+
+      ]
     }
   },
   apollo: {
+    user: gql`query {
+      user(id: 1) {
+        name
+        age
+      }
+    }`,
+    users: gql`query {
+      users {
+        name
+        age
+      }
+    }`,
     $subscribe: {
       userAdded: {
         query: gql`subscription {
@@ -33,6 +65,7 @@ export default {
         result(data) {
           const user = data.data.userAdded
           this.user = user
+          this.users.push(user)
           console.log(user)
           return(user)
         }
