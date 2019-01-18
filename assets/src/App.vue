@@ -31,7 +31,7 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js & Phoenix & GraphQL App',
+      msg: 'Hi, Everyone!',
       user: {
         name: '',
         age: ''
