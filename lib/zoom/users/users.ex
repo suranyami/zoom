@@ -2,7 +2,7 @@ defmodule Zoom.Users do
   @moduledoc """
     User Data Context.
   """
-
+  import Ecto.Query
   alias Zoom.{Repo, User}
 
   def add(name, age) do
@@ -25,5 +25,9 @@ defmodule Zoom.Users do
 
   def list() do
     Repo.all(User)
+  end
+
+  def count() do
+    Repo.aggregate(from(u in "users"), :count, :id)
   end
 end

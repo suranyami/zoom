@@ -9,5 +9,7 @@ defmodule ZoomWeb.Schema.User do
     field(:id, :id)
     field(:name, :string)
     field(:age, :integer)
+    field(:color, :string)
+    field(:uuid, :string)
   end
 end

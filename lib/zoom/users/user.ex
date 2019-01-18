@@ -8,14 +8,21 @@ defmodule Zoom.User do
   schema "users" do
     field(:age, :integer)
     field(:name, :string)
+    field(:color, :string)
+    field(:uuid, :string)
 
     timestamps()
   end
 
+  @attrs [
+    :age,
+    :name,
+    :color,
+    :uuid
+  ]
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :age])
-    |> validate_required([:name, :age])
+    |> cast(attrs, @attrs)
   end
 end

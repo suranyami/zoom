@@ -1,11 +1,9 @@
 <template>
   <div class="container">
     <div id="app">
-      <h1>{{ msg }}</h1>
-      <h2>The following was loaded over Graphql:</h2>
-      <h3>User: {{ user.name }}</h3>
+      <h1>New User: {{ user.name }}</h1>
       <h3>Age: {{ user.age }}</h3>
-
+      <h2>Total Users: {{ users.length }}</h2>
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
@@ -26,19 +24,12 @@
 
 <script>
 import gql from 'graphql-tag'
-
 export default {
   name: 'app',
   data () {
     return {
-      msg: 'Hi, Everyone!',
-      user: {
-        name: '',
-        age: ''
-      },
-      users: [
-
-      ]
+      users: [],
+      user: {name: '', age: ''}
     }
   },
   apollo: {
@@ -68,6 +59,19 @@ export default {
           this.users.push(user)
           console.log(user)
           return(user)
+        }
+      },
+
+      users: {
+        query: gql`subscription {
+          users {
+            name
+          }
+        }`,
+        result(data) {
+          const users = data.data.users
+          this.users = users
+          return(users)
         }
       }
     }
