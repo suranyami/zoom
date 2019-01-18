@@ -3,9 +3,10 @@ defmodule ZoomWeb.Resolvers.Users do
     Queries for user.
   """
   def find(_parent, %{id: id}, _resolution) do
-    case Zoom.Users.find(id) do
+    result = case Zoom.Users.find(id) do
       nil -> {:error, "User ID #{id} not found"}
-      user -> {:ok, user}
+      user ->
+        {:ok, %{name: String.downcase(user.name), age: user.age}}
     end
   end
 
