@@ -23,72 +23,66 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
+import gql from "graphql-tag";
 export default {
-  name: 'app',
-  data () {
+  name: "app",
+  data() {
     return {
       users: [],
-      user: {name: '', age: ''}
-    }
+      user: { name: "", age: "" }
+    };
   },
   apollo: {
-    user: gql`query {
-      user(id: 1) {
-        name
-        age
+    user: gql`
+      query {
+        user(id: 1) {
+          name
+          age
+        }
       }
-    }`,
-    users: gql`query {
-      users {
-        name
-        age
+    `,
+    users: gql`
+      query {
+        users {
+          name
+          age
+        }
       }
-    }`,
+    `,
     $subscribe: {
       userAdded: {
-        query: gql`subscription {
-          userAdded {
-            name
-            age
+        query: gql`
+          subscription {
+            userAdded {
+              name
+              age
+            }
           }
-        }`,
+        `,
         result(data) {
-          const user = data.data.userAdded
-          this.user = user
-          this.users.push(user)
-          console.log(user)
-          return(user)
-        }
-      },
-
-      users: {
-        query: gql`subscription {
-          users {
-            name
-          }
-        }`,
-        result(data) {
-          const users = data.data.users
-          this.users = users
-          return(users)
+          const user = data.data.userAdded;
+          this.user = user;
+          this.users.push(user);
+          console.log(user);
+          return user;
         }
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 ul {
