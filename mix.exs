@@ -5,8 +5,8 @@ defmodule Zoom.Mixfile do
   def project do
     [
       app: :zoom,
-      version: "0.0.1",
-      elixir: "~> 1.7",
+      version: "0.0.2",
+      elixir: "~> 1.10",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -33,19 +33,19 @@ defmodule Zoom.Mixfile do
 
   defp deps do
     [
-      {:absinthe, "~> 1.4"},
-      {:absinthe_plug, "~> 1.4"},
-      {:absinthe_phoenix, "~> 1.4"},
-      {:cowboy, "~> 1.0"},
-      {:credo, "~> 0.10", only: [:dev, :test], runtime: false},
-      {:gettext, "~> 0.11"},
-      {:phoenix, "~> 1.3"},
-      {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix_ecto, "~> 3.2"},
+      {:absinthe, "~> 1.5"},
+      {:absinthe_plug, "~> 1.5"},
+      {:absinthe_phoenix, "~> 2.0"},
+      {:cowboy, "~> 2.8"},
+      {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:gettext, "~> 0.18"},
+      {:phoenix, "~> 1.5"},
+      {:phoenix_pubsub, "~> 2.0"},
+      {:phoenix_ecto, "~> 4.1"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_html, "~> 2.10"},
-      {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:poison, "~> 3.1"}
+      {:phoenix_html, "~> 2.14"},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:poison, "~> 4.0"}
     ]
   end
 
